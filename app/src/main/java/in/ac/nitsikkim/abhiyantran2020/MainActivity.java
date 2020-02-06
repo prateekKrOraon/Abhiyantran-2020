@@ -2,7 +2,6 @@ package in.ac.nitsikkim.abhiyantran2020;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
@@ -12,16 +11,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import in.ac.nitsikkim.abhiyantran2020.ui.dashboard.DashboardFragment;
+import in.ac.nitsikkim.abhiyantran2020.ui.fragments.EventFragment;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.GalleryFragment;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.GuestFragment;
-import in.ac.nitsikkim.abhiyantran2020.ui.home.HomeFragment;
-import in.ac.nitsikkim.abhiyantran2020.ui.notifications.NotificationsFragment;
+import in.ac.nitsikkim.abhiyantran2020.ui.fragments.HomeFragment;
+import in.ac.nitsikkim.abhiyantran2020.ui.fragments.NotificationsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     HomeFragment mHomeFragment;
-    DashboardFragment mDashboardFragment;
+    EventFragment mEventFragment;
     NotificationsFragment mNotificationFragment;
     GuestFragment mGuestFragment;
     GalleryFragment mGalleryFragment;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         mHomeFragment = new HomeFragment();
-        mDashboardFragment = new DashboardFragment();
+        mEventFragment = new EventFragment();
         mNotificationFragment = new NotificationsFragment();
         mGalleryFragment = new GalleryFragment();
         mGuestFragment = new GuestFragment();
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         switchFragment(mHomeFragment);
                         break;
                     case R.id.bottom_nav_events:
-                        switchFragment(mDashboardFragment);
+                        switchFragment(mEventFragment);
                         break;
                     case R.id.bottom_nav_notification:
                         switchFragment(mNotificationFragment);

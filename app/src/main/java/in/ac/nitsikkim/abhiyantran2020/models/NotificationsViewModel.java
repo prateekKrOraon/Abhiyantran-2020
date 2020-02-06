@@ -1,4 +1,4 @@
-package in.ac.nitsikkim.abhiyantran2020.ui.notifications;
+package in.ac.nitsikkim.abhiyantran2020.models;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

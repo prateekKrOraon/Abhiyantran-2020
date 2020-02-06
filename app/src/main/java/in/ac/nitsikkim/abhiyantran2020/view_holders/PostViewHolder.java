@@ -1,4 +1,4 @@
-package in.ac.nitsikkim.abhiyantran2020.ui.home;
+package in.ac.nitsikkim.abhiyantran2020.view_holders;
 
 import android.view.View;
 import android.widget.ImageButton;

@@ -1,4 +1,4 @@
-package in.ac.nitsikkim.abhiyantran2020.ui.notifications;
+package in.ac.nitsikkim.abhiyantran2020.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,18 +13,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import in.ac.nitsikkim.abhiyantran2020.R;
+import in.ac.nitsikkim.abhiyantran2020.models.EventViewModel;
 
-public class NotificationsFragment extends Fragment {
+public class EventFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
+    private EventViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                ViewModelProviders.of(this).get(NotificationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-        final TextView textView = root.findViewById(R.id.text_notifications);
-        notificationsViewModel.getText().observe(this, new Observer<String>() {
+        dashboardViewModel =
+                ViewModelProviders.of(this).get(EventViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        final TextView textView = root.findViewById(R.id.text_dashboard);
+        dashboardViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

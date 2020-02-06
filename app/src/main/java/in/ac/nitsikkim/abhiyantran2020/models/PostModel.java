@@ -1,16 +1,20 @@
-package in.ac.nitsikkim.abhiyantran2020.ui.home;
+package in.ac.nitsikkim.abhiyantran2020.models;
 
-public class PostModal {
+import com.google.firebase.storage.StorageReference;
 
+public class PostModel {
+
+    public String postId;
     public int profileImage;
     public String profileName;
     public String time;
     public String postText;
-    public int postImage;
+    public String postImage;
     public String likeCount;
     public String commentCount;
 
-    public PostModal(int profileImage,String profileName,String time,String postText,int postImage, String likeCount,String commentCount){
+    public PostModel(String postId,int profileImage, String profileName, String time, String postText, String postImage, String likeCount, String commentCount){
+        this.postId = postId;
         this.commentCount = commentCount;
         this.likeCount = likeCount;
         this.postImage = postImage;
