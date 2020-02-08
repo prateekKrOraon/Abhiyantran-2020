@@ -15,4 +15,6 @@
     <string name="login_inst">Login to continue</string>
     <string name="login">Login with Google</string>
     <string name="title_profile">Profile</string>
+    <string name="about_abhi">About Abhiyantran</string>
+    <string name="title_about">About</string>
 </resources>

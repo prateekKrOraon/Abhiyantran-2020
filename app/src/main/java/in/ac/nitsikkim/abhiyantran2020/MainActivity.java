@@ -1,6 +1,5 @@
 package in.ac.nitsikkim.abhiyantran2020;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -12,18 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import in.ac.nitsikkim.abhiyantran2020.ui.activities.LoginActivity;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.EventFragment;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.GalleryFragment;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.GuestFragment;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.HomeFragment;
-import in.ac.nitsikkim.abhiyantran2020.ui.fragments.ProfileFragment;
+import in.ac.nitsikkim.abhiyantran2020.ui.fragments.AboutFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     HomeFragment mHomeFragment;
     EventFragment mEventFragment;
-    ProfileFragment mProfileFragment;
+    AboutFragment mProfileFragment;
     GuestFragment mGuestFragment;
     GalleryFragment mGalleryFragment;
 
@@ -31,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-//        }
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
@@ -48,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         mHomeFragment = new HomeFragment();
         mEventFragment = new EventFragment();
-        mProfileFragment = new ProfileFragment();
+        mProfileFragment = new AboutFragment();
         mGalleryFragment = new GalleryFragment();
         mGuestFragment = new GuestFragment();
 
@@ -56,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationViewListener(bottomNavigationView);
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, LoginActivity.class);
+//        startActivity(intent);
 
     }
 

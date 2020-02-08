@@ -18,13 +18,13 @@ import in.ac.nitsikkim.abhiyantran2020.R;
 import in.ac.nitsikkim.abhiyantran2020.adapters.ProfilePagerAdapter;
 import in.ac.nitsikkim.abhiyantran2020.models.ProfilePagerModel;
 
-public class ProfileFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
     private ArrayList<ProfilePagerModel> profilePages;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        View root = inflater.inflate(R.layout.fragment_about, container, false);
         profilePages = new ArrayList<>();
         TabLayout tabLayout = root.findViewById(R.id.profile_tab_layout);
         ViewPager viewPager = root.findViewById(R.id.profile_view_pager);
@@ -52,7 +52,10 @@ public class ProfileFragment extends Fragment {
 
     private void setViewPager(ViewPager viewPager){
 
-        ProfilePagerAdapter profilePagerAdapter = new ProfilePagerAdapter(getActivity().getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ProfilePagerAdapter profilePagerAdapter = new ProfilePagerAdapter(
+                getChildFragmentManager(),
+                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+        );
         profilePagerAdapter.addProfilePages(profilePages);
         viewPager.setAdapter(profilePagerAdapter);
     }

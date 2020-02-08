@@ -6,12 +6,11 @@
     tools:context=".ui.fragments.AboutAppFragment"
     android:background="@color/almostBlack">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="About Application" />
+    <androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/about_app_recycler_view"/>
 
 </FrameLayout>
