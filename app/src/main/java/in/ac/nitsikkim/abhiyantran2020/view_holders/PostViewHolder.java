@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
@@ -24,7 +25,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public ImageButton commentButton;
     public TextView likeCount;
     public TextView commentCount;
-
+    public CardView post;
 
     public PostViewHolder(@NonNull View view) {
         super(view);
@@ -37,5 +38,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         commentButton = view.findViewById(R.id.post_comment);
         likeCount = view.findViewById(R.id.like_count);
         commentCount = view.findViewById(R.id.comment_count);
+        post = view.findViewById(R.id.post_item);
     }
 }

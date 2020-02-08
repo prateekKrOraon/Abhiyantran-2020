@@ -1,5 +1,6 @@
 package in.ac.nitsikkim.abhiyantran2020.ui.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,19 +33,21 @@ public class HomeFragment extends Fragment {
 
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private Query collectionReference = firestore.collection("home").orderBy("timestamp", Query.Direction.DESCENDING);
-
+    int postsLength = 0;
+    boolean newPosts = false;
     public static String id = "home_fragment";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
-
+        mRecyclerView = root.findViewById(R.id.post_recycler_view);
         final ArrayList<PostModel> posts = new ArrayList<>();
+        final RelativeLayout newPostButton = root.findViewById(R.id.new_post_button);
         loadPosts(root,posts);
+
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-
                 try{
 
                     posts.clear();
@@ -53,8 +56,6 @@ public class HomeFragment extends Fragment {
 
                         System.out.println();
                         Timestamp timestamp = (Timestamp) documentSnapshot.get("timestamp");
-
-                        System.out.println(documentSnapshot.getString("post_image"));
                         assert timestamp != null;
                         posts.add(
                                 new PostModel(
@@ -68,10 +69,17 @@ public class HomeFragment extends Fragment {
                                         "10"
                                 )
                         );
-
-                        mHomeAdapter.notifyDataSetChanged();
-
                     }
+
+                    if(postsLength == 0 && !newPosts){
+                        mHomeAdapter.notifyDataSetChanged();
+                    }else if(posts.size() > postsLength){
+                        newPosts = true;
+                        newPostButton.setVisibility(View.VISIBLE);
+                    }else{
+                        mHomeAdapter.notifyDataSetChanged();
+                    }
+                    postsLength = posts.size();
 
                 }catch(NullPointerException ex){
                     Toast.makeText(getContext(),"Null Pointer Exception",Toast.LENGTH_SHORT).show();
@@ -80,11 +88,37 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        newPostButton.setVisibility(View.INVISIBLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mRecyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    if(oldScrollY > 5 && newPosts){
+                        newPostButton.setVisibility(View.VISIBLE);
+                    }else if(oldScrollY < 0){
+                        newPostButton.setVisibility(View.INVISIBLE);
+                    }
+                }
+            });
+        }
+
+        newPostButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mHomeAdapter.notifyDataSetChanged();
+                newPosts = false;
+                newPostButton.setVisibility(View.INVISIBLE);
+            }
+        });
         return root;
     }
 
+    private void activateNewPostButton() {
+
+    }
+
     private void loadPosts(View root,ArrayList<PostModel> posts){
-        mRecyclerView = root.findViewById(R.id.post_recycler_view);
+
         mLayoutManager = new LinearLayoutManager(getContext());
         mHomeAdapter = new HomeAdapter(getContext(),posts);
         mRecyclerView.setHasFixedSize(true);

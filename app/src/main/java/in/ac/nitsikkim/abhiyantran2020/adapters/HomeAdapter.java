@@ -1,5 +1,6 @@
 package in.ac.nitsikkim.abhiyantran2020.adapters;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,13 +60,12 @@ public class HomeAdapter extends RecyclerView.Adapter<PostViewHolder> {
             storageReference.child("posts/"+imageRef).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    System.out.println(uri);
                     Glide.with(context).load(uri).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.postImage);
 
                 }
             });
             holder.postImage.requestLayout();
-            holder.postImage.getLayoutParams().height = 550;
+            holder.postImage.getLayoutParams().height = 600;
         }else{
             holder.postImage.requestLayout();
             holder.postImage.getLayoutParams().height = 0;
@@ -80,10 +80,17 @@ public class HomeAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 list.get(position).likeCount = ""+likes;
                 Map<String,String> update = new HashMap<>();
                 update.put("likes",""+likes);
+                holder.likeButton.setImageResource(R.drawable.baseline_thumb_up_black_48);
                 postsRef.document(list.get(position).postId).set(update, SetOptions.merge());
             }
         });
 
+        holder.post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
+            }
+        });
 
     }
 

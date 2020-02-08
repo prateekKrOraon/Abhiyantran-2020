@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/main_app_bar"
@@ -18,8 +19,37 @@
             android:id="@+id/main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:titleTextColor="#FFFFFF"
-            android:background="#FF8877" />
+            app:titleTextColor="@color/colorAccent"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/app_logo"
+                android:tint="@color/colorAccent"
+                android:layout_marginEnd="10dp"/>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:src="@drawable/abhi"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center_vertical"
+                android:tint="@color/colorAccent"/>
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="20dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/outline_notifications_black_48"
+                android:tint="@color/colorAccent"
+                android:scaleType="fitCenter"/>
+            
+        </androidx.appcompat.widget.Toolbar>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -29,7 +59,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
+        app:itemTextColor="@color/colorAccent"
+        app:itemIconTint="@drawable/bottom_nav_bar_selector"
+        android:background="@color/almostBlack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
