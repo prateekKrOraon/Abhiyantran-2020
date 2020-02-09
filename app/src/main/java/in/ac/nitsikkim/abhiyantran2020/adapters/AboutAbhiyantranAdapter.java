@@ -1,6 +1,7 @@
 package in.ac.nitsikkim.abhiyantran2020.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import in.ac.nitsikkim.abhiyantran2020.R;
 import in.ac.nitsikkim.abhiyantran2020.models.ProfileOptionsModel;
+import in.ac.nitsikkim.abhiyantran2020.ui.activities.RegisteredEventsActivity;
 import in.ac.nitsikkim.abhiyantran2020.view_holders.ProfileOptionsViewHolder;
 
 public class AboutAbhiyantranAdapter extends RecyclerView.Adapter<ProfileOptionsViewHolder> {
@@ -41,6 +43,9 @@ public class AboutAbhiyantranAdapter extends RecyclerView.Adapter<ProfileOptions
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, list.get(position).title, Toast.LENGTH_SHORT).show();
+                if (list.get(position).title == "Registered Events"){
+                    context.startActivity(new Intent(context,RegisteredEventsActivity.class));
+                }
             }
         });
 

@@ -25,6 +25,21 @@ public class AboutAbhiyantranFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about_abhiyantran, container, false);
 
         ArrayList<ProfileOptionsModel> options = new ArrayList<>();
+
+        options.add(
+                new ProfileOptionsModel(
+                        R.drawable.outline_edit_black_48,
+                        "Edit Profile"
+                )
+        );
+
+        options.add(
+                new ProfileOptionsModel(
+                        R.drawable.outline_event_note_black_48,
+                        "Registered Events"
+                )
+        );
+
         options.add(
                 new ProfileOptionsModel(
                         R.drawable.outline_info_black_48,
