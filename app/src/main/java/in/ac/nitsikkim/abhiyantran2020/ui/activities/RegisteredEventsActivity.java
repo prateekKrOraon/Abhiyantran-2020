@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.google.firebase.Timestamp;
@@ -33,6 +34,13 @@ public class RegisteredEventsActivity extends AppCompatActivity {
         }catch (NullPointerException ex){
             ex.printStackTrace();
         }
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         ArrayList<RegisteredEventsModel> events = new ArrayList<>();
 

@@ -1,6 +1,7 @@
 package in.ac.nitsikkim.abhiyantran2020.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 
 import in.ac.nitsikkim.abhiyantran2020.R;
 import in.ac.nitsikkim.abhiyantran2020.models.ProfileOptionsModel;
+import in.ac.nitsikkim.abhiyantran2020.ui.activities.AboutActivity;
+import in.ac.nitsikkim.abhiyantran2020.ui.activities.DevelopersActivity;
 import in.ac.nitsikkim.abhiyantran2020.view_holders.ProfileOptionsViewHolder;
 
 public class AboutApplicationAdapter extends RecyclerView.Adapter<ProfileOptionsViewHolder> {
@@ -41,6 +44,12 @@ public class AboutApplicationAdapter extends RecyclerView.Adapter<ProfileOptions
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, list.get(position).title, Toast.LENGTH_SHORT).show();
+                if(list.get(position).title == "About Application"){
+                    context.startActivity(new Intent(context, AboutActivity.class));
+                }
+                if(list.get(position).title == "Developers"){
+                    context.startActivity(new Intent(context, DevelopersActivity.class));
+                }
             }
         });
 

@@ -55,6 +55,13 @@ public class AboutAppFragment extends Fragment {
                 )
         );
 
+        options.add(
+                new ProfileOptionsModel(
+                        R.drawable.outline_info_black_48,
+                        "About Application"
+                )
+        );
+
         RecyclerView recyclerView = view.findViewById(R.id.about_app_recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         AboutApplicationAdapter applicationAdapter = new AboutApplicationAdapter(getContext(),options);

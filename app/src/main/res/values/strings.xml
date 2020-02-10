@@ -18,4 +18,10 @@
     <string name="about_abhi">About Abhiyantran</string>
     <string name="title_about">About</string>
     <string name="reg_events">Registered Events</string>
+    <string name="abhiyantran">Abhiyantran App</string>
+    <string name="version">Version</string>
+    <string name="about_app">The official android application for Abhiyantran 2020</string>
+    <string name="third_party">Third Party Resources</string>
+    <string name="about">About app</string>
+    <string name="developers">Developers</string>
 </resources>
