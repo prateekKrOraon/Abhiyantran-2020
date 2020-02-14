@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +40,7 @@ public class HomeFragment extends Fragment {
     int postsLength = 0;
     boolean newPosts = false;
     public static String id = "home_fragment";
+    private boolean down;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class HomeFragment extends Fragment {
         mRecyclerView = root.findViewById(R.id.post_recycler_view);
         final ArrayList<PostModel> posts = new ArrayList<>();
         final RelativeLayout newPostButton = root.findViewById(R.id.new_post_button);
+        newPostButton.setVisibility(View.INVISIBLE);
         loadPosts(root,posts);
 
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -80,7 +86,6 @@ public class HomeFragment extends Fragment {
                         mHomeAdapter.notifyDataSetChanged();
                     }
                     postsLength = posts.size();
-
                 }catch(NullPointerException ex){
                     Toast.makeText(getContext(),"Null Pointer Exception",Toast.LENGTH_SHORT).show();
                 }
@@ -88,34 +93,51 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        newPostButton.setVisibility(View.INVISIBLE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mRecyclerView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if(oldScrollY > 5 && newPosts){
-                        newPostButton.setVisibility(View.VISIBLE);
-                    }else if(oldScrollY < 0){
-                        newPostButton.setVisibility(View.INVISIBLE);
-                    }
-                }
-            });
-        }
-
         newPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mHomeAdapter.notifyDataSetChanged();
                 newPosts = false;
                 newPostButton.setVisibility(View.INVISIBLE);
+                newPostButton.animate().translationYBy(300);
             }
         });
+
+        final Animation navAnimationDown = AnimationUtils.loadAnimation(getContext(),R.anim.translate_bottom_nav_down);
+        final Animation navAnimationUp = AnimationUtils.loadAnimation(getContext(),R.anim.translate_bottom_nav_up);
+        final CoordinatorLayout relativeLayout = getActivity().findViewById(R.id.bottom_nav_bar);
+        down = false;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                    super.onScrollStateChanged(recyclerView, newState);
+                }
+
+                @Override
+                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    if(dy < -15){
+                        if(down){
+                            relativeLayout.setVisibility(View.VISIBLE);
+                            relativeLayout.startAnimation(navAnimationUp);
+                            down = false;
+                        }
+                    }else if(dy > 15){
+                        if(!down){
+                            down = true;
+                            relativeLayout.startAnimation(navAnimationDown);
+                            relativeLayout.setVisibility(View.INVISIBLE);
+                        }
+                    }
+
+                }
+            });
+        }
         return root;
     }
 
-    private void activateNewPostButton() {
 
-    }
 
     private void loadPosts(View root,ArrayList<PostModel> posts){
 
