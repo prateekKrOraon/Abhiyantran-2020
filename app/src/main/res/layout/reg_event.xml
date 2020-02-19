@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="10dp">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="35dp"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/grey"
+            android:layout_gravity="center_horizontal"/>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/reg_event_circle"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/reg_event_date"
+            android:text="09th April 2020"
+            android:textColor="@color/grey"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"/>
+
+        <TextView
+            android:id="@+id/reg_event_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call of Duty"
+            android:textColor="@color/colorAccent"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/outline_location_on_black_48"
+                android:layout_marginEnd="5dp"
+                android:tint="@color/colorAccent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/reg_event_venue"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textSize="14sp"
+                android:textColor="@color/grey"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/reg_event_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="kahgdpoahsdgkajhskl;d"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="@color/grey"/>
+
+    </LinearLayout>
+
+</LinearLayout>

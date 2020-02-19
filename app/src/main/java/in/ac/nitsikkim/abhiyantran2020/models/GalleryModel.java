@@ -2,8 +2,8 @@ package in.ac.nitsikkim.abhiyantran2020.models;
 
 public class GalleryModel {
 
-      String galleryImage;
-      String galleryInfo;
+    private String galleryImage;
+    private String galleryInfo;
 
     public GalleryModel(String galleryImage, String galleryInfo) {
         this.galleryImage = galleryImage;
