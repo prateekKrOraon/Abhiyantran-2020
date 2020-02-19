@@ -20,6 +20,7 @@ import in.ac.nitsikkim.abhiyantran2020.ui.fragments.HomeFragment;
 import in.ac.nitsikkim.abhiyantran2020.ui.fragments.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
+    int x;
 
     HomeFragment mHomeFragment;
     EventFragment mEventFragment;
