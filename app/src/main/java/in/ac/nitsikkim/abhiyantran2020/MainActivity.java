@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 //        }
 
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mHomeFragment = new HomeFragment();
         mEventFragment = new EventFragment();
         mProfileFragment = new ProfileFragment();
-        mGalleryFragment = new GalleryFragment();
+        mGalleryFragment = new GalleryFragment(this);
         mGuestFragment = new GuestFragment();
 
         switchFragment(mHomeFragment);
