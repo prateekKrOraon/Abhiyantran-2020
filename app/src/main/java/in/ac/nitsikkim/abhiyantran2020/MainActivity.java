@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
         mHomeFragment = new HomeFragment();
         mEventFragment = new EventFragment();
         mAboutFragment = new AboutFragment();
-        mGalleryFragment = new GalleryFragment();
+        mGalleryFragment = new GalleryFragment(this);
         mGuestFragment = new GuestFragment();
 
         eventText = findViewById(R.id.bottom_nav_events_new_text);

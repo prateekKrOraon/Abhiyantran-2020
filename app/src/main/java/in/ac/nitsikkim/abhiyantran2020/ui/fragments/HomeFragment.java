@@ -114,7 +114,7 @@ public class HomeFragment extends Fragment {
 
         final Animation navAnimationDown = AnimationUtils.loadAnimation(getContext(),R.anim.translate_bottom_nav_down);
         final Animation navAnimationUp = AnimationUtils.loadAnimation(getContext(),R.anim.translate_bottom_nav_up);
-        final CoordinatorLayout relativeLayout = getActivity().findViewById(R.id.bottom_nav_bar);
+        final CoordinatorLayout bottomNavBar = getActivity().findViewById(R.id.bottom_nav_bar);
         down = false;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -128,15 +128,15 @@ public class HomeFragment extends Fragment {
                     super.onScrolled(recyclerView, dx, dy);
                     if(dy < -10){
                         if(down){
-                            relativeLayout.setVisibility(View.VISIBLE);
-                            relativeLayout.startAnimation(navAnimationUp);
+                            bottomNavBar.setVisibility(View.VISIBLE);
+                            bottomNavBar.startAnimation(navAnimationUp);
                             down = false;
                         }
                     }else if(dy > 15){
                         if(!down){
                             down = true;
-                            relativeLayout.startAnimation(navAnimationDown);
-                            relativeLayout.setVisibility(View.INVISIBLE);
+                            bottomNavBar.startAnimation(navAnimationDown);
+                            bottomNavBar.setVisibility(View.INVISIBLE);
                         }
                     }
 
