@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,11 +20,22 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+
 import java.util.ArrayList;
 
 import in.ac.nitsikkim.abhiyantran2020.R;
 import in.ac.nitsikkim.abhiyantran2020.adapters.GalleryAdapter;
 import in.ac.nitsikkim.abhiyantran2020.models.GalleryModel;
+
+import static in.ac.nitsikkim.abhiyantran2020.utility.Constants.gallery;
+import static in.ac.nitsikkim.abhiyantran2020.utility.Constants.image;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +46,10 @@ public class GalleryFragment extends Fragment {
     RecyclerView recyclerView;
     LinearLayoutManager linearLayoutManager;
     GalleryAdapter galleryAdapter;
+    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    private Query collectionRef;
+
     private boolean down;
     public Activity context;
 
@@ -55,7 +71,26 @@ public class GalleryFragment extends Fragment {
         //fetch Data
 
         //setRecycler View
-        setRecyclerView(root);
+
+        final ArrayList<GalleryModel> images = new ArrayList<>();
+        collectionRef = firestore.collection(gallery);
+        collectionRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                images.clear();
+                for(DocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    images.add(
+                            new GalleryModel(
+                                    documentSnapshot.getString(image),
+                                    documentSnapshot.getString(image)
+                            )
+                    );
+                    galleryAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        setRecyclerView(root,images);
 
         final Animation navAnimationDown = AnimationUtils.loadAnimation(getContext(),R.anim.translate_bottom_nav_down);
         final Animation navAnimationUp = AnimationUtils.loadAnimation(getContext(),R.anim.translate_bottom_nav_up);
@@ -93,27 +128,15 @@ public class GalleryFragment extends Fragment {
     }
 
 
-    public void setRecyclerView(View root)
+    public void setRecyclerView(View root,ArrayList<GalleryModel> images)
     {
 
-
-        galleryModels = new ArrayList<>();
-        ArrayList<GalleryModel> insideItemAL = new ArrayList<>();
-        insideItemAL.add(new GalleryModel("khbsdf","vfdvsf"));
-        insideItemAL.add(new GalleryModel("khbsdf","vfdvsf"));
-        insideItemAL.add(new GalleryModel("khbsdf","vfdvsf"));
-
-        galleryModels.add(insideItemAL);
-        galleryModels.add(insideItemAL);
-        galleryModels.add(insideItemAL);
-        galleryModels.add(insideItemAL);
-        galleryModels.add(insideItemAL);
 
         recyclerView = root.findViewById(R.id.gallery_recycler_view);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
         Activity activity = getActivity();
-        galleryAdapter = new GalleryAdapter(context,galleryModels,activity);
+        galleryAdapter = new GalleryAdapter(context,images,activity);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(galleryAdapter);
 

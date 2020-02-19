@@ -7,4 +7,6 @@ public class Constants {
     public static String likedPosts = "likedPosts";
     public static String regEvents = "regEvents";
     public static String rollNo = "rollNo";
+    public static String gallery = "gallery";
+    public static String image = "image";
 }
