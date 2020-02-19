@@ -47,7 +47,7 @@
                     android:textColor="@color/white"/>
 
                 <TextView
-                    android:id="@+id/profile_email"
+                    android:id="@+id/profile_phone_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="b170078@nitsikkim.ac.in"

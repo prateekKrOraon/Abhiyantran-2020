@@ -12,8 +12,8 @@
     <string name="profile_name">Profile name</string>
     <string name="new_post">New Posts</string>
     <string name="welcome">Welcome to Abhiyantran</string>
-    <string name="login_inst">Login to continue</string>
-    <string name="login">Login with Google</string>
+    <string name="login_inst">Please enter your mobile number to receive a verification code.</string>
+    <string name="login">Continue</string>
     <string name="title_profile">Profile</string>
     <string name="about_abhi">About Abhiyantran</string>
     <string name="title_about">About</string>
@@ -26,4 +26,5 @@
     <string name="developers">Developers</string>
     <string name="sponsors">Sponsors</string>
     <string name="bottom_nav_home">Home</string>
+    <string name="verify">Verify Your Number</string>
 </resources>

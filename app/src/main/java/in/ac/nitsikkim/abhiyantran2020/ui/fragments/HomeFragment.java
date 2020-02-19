@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import in.ac.nitsikkim.abhiyantran2020.R;
 import in.ac.nitsikkim.abhiyantran2020.adapters.HomeAdapter;
 import in.ac.nitsikkim.abhiyantran2020.models.PostModel;
+import in.ac.nitsikkim.abhiyantran2020.utility.User;
 
 
 public class HomeFragment extends Fragment {
@@ -37,14 +38,21 @@ public class HomeFragment extends Fragment {
 
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private Query collectionReference = firestore.collection("home").orderBy("timestamp", Query.Direction.DESCENDING);
-    int postsLength = 0;
-    boolean newPosts = false;
+    private int postsLength = 0;
+    private boolean newPosts = false;
     public static String id = "home_fragment";
     private boolean down;
 
+    @Override
+    public void onDestroyView() {
+        postsLength = 0;
+        super.onDestroyView();
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             final ViewGroup container, Bundle savedInstanceState) {
+                             final ViewGroup container, final Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
+
         mRecyclerView = root.findViewById(R.id.post_recycler_view);
         final ArrayList<PostModel> posts = new ArrayList<>();
         final RelativeLayout newPostButton = root.findViewById(R.id.new_post_button);
@@ -57,10 +65,11 @@ public class HomeFragment extends Fragment {
                 try{
 
                     posts.clear();
+
                     assert queryDocumentSnapshots != null;
                     for(QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
 
-                        System.out.println();
+
                         Timestamp timestamp = (Timestamp) documentSnapshot.get("timestamp");
                         assert timestamp != null;
                         posts.add(
@@ -82,7 +91,7 @@ public class HomeFragment extends Fragment {
                     }else if(posts.size() > postsLength){
                         newPosts = true;
                         newPostButton.setVisibility(View.VISIBLE);
-                    }else{
+                    }else if(postsLength != posts.size()){
                         mHomeAdapter.notifyDataSetChanged();
                     }
                     postsLength = posts.size();
@@ -117,7 +126,7 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
-                    if(dy < -15){
+                    if(dy < -10){
                         if(down){
                             relativeLayout.setVisibility(View.VISIBLE);
                             relativeLayout.startAnimation(navAnimationUp);
