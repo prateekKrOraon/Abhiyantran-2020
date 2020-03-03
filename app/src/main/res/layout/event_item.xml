@@ -1,6 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.google.android.material.card.MaterialCardView android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/event_album"
+                android:layout_width="250dp"
+                android:layout_height="130dp"
+                android:background="@color/colorAccent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/app_logo"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/app_logo"
+                    android:tint="@color/white"
+                    android:layout_marginEnd="3dp"/>
+
+                <ImageView
+                    android:id="@+id/event_abhi_image"
+                    android:layout_width="48dp"
+                    android:layout_height="8dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="3dp"
+                    android:tint="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Presents"
+                    android:textSize="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/linear_gradient_3"
+                android:layout_gravity="bottom"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_location_on_black_24dp"
+                    android:tint="@color/white"/>
+
+                <TextView
+                    android:id="@+id/event_venue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Academics"
+                    android:textColor="@color/cardview_light_background"
+                    android:layout_marginLeft="1dp"
+                    android:textSize="13dp"/>
+
+            </LinearLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/linear_gradient_4">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Event Name"
+                    android:layout_gravity="left|bottom"
+                    android:textColor="@color/white"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

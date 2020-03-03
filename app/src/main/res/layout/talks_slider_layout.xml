@@ -1,6 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardBackgroundColor="#282928"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="5dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent">
+
+
+            <ImageView
+                android:id="@+id/talks_album"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:foreground="@drawable/linear_gradient_1"/>
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:foreground="@drawable/linear_gradient_2"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/app_logo"
+                    android:tint="@color/white"
+                    android:layout_marginEnd="5dp"/>
+
+                <ImageView
+                    android:id="@+id/talks_abhi_image"
+                    android:layout_width="50dp"
+                    android:layout_height="10dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="5dp"
+                    android:tint="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Presents"
+                    android:textSize="12dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/talks_topic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A Talks on Data Mining"
+                    android:textColor="@color/white"
+                    android:textFontWeight="@integer/google_play_services_version"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium">
+                </TextView>
+                <TextView
+                    android:id="@+id/talks_person"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="by AK dev"
+                    android:textColor="@color/white"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/event_register_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_gravity="bottom|left"
+                android:background="@drawable/know_more_background">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:textSize="12dp"
+                    android:text="Know more"/>
+
+            </LinearLayout>
+
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

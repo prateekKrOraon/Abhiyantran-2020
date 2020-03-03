@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        android:layout_margin="4dp"
+        android:background="@drawable/events_layout_item_background">
+
+        <TextView
+            android:id="@+id/events_l_o_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            />
+
+        <me.tankery.lib.circularseekbar.CircularSeekBar
+            android:id="@+id/events_l_o_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cs_circle_progress_color = "@color/colorAccent"
+            app:cs_circle_stroke_width = "3dp"
+            app:cs_disable_pointer = "true"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <TextView
+        android:id="@+id/events_l_o_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Day"
+        android:textColor="@color/cardview_light_background"/>
+
 
 </LinearLayout>

@@ -1,20 +1,435 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:text="Events"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/text_talks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Talks"
+                        android:textFontWeight="1"
+                        android:fontFamily="serif-monospace"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/cardview_light_background"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text_talks"
+                        android:layout_toLeftOf="@+id/navigate_talks"
+                        android:background="#555555"/>
+
+                    <ImageView
+                        android:id="@+id/navigate_talks"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/cardview_light_background"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/imageSlider_talks"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="10dp"
+                    app:sliderAnimationDuration="3000"
+                    app:sliderAutoCycleDirection="right"
+                    app:sliderAutoCycleEnabled="true"
+                    app:sliderIndicatorAnimationDuration="3000"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="10dp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="2dp"
+                    app:sliderIndicatorRadius="1.5dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="#FFF"
+                    app:sliderScrollTimeInSec="3"
+                    app:sliderStartAutoCycle="true" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Events Left"
+                    android:textFontWeight="1"
+                    android:fontFamily="serif-monospace"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                    android:textColor="@color/cardview_light_background"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="#282828"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+
+                        <include
+                            android:id="@+id/events_l_o_day1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            layout="@layout/events_left_out_item"
+                            android:layout_weight="1"/>
+                        <include
+                            android:id="@+id/events_l_o_day2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            layout="@layout/events_left_out_item"
+                            android:layout_weight="1"/>
+                        <include
+                            android:id="@+id/events_l_o_day3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            layout="@layout/events_left_out_item"
+                            android:layout_weight="1"/>
+
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:background="@color/colorPrimary">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/text_day1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Day1"
+                        android:textFontWeight="1"
+                        android:fontFamily="serif-monospace"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/cardview_light_background"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text_day1"
+                        android:layout_toLeftOf="@+id/navigate_day1"
+                        android:background="#555555"/>
+
+                    <ImageView
+                        android:id="@+id/navigate_day1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/cardview_light_background"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_day1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/text_day2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Day2"
+                        android:textFontWeight="1"
+                        android:fontFamily="serif-monospace"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/cardview_light_background"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text_day2"
+                        android:layout_toLeftOf="@+id/navigate_day2"
+                        android:background="#555555"/>
+
+                    <ImageView
+                        android:id="@+id/navigate_day2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/cardview_light_background"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_day2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/text_day3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Day3"
+                        android:textFontWeight="1"
+                        android:fontFamily="serif-monospace"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/cardview_light_background"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text_day3"
+                        android:layout_toLeftOf="@+id/navigate_day3"
+                        android:background="#555555"/>
+
+                    <ImageView
+                        android:id="@+id/navigate_day3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/cardview_light_background"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_day3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/text_work_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Workshops"
+                        android:textFontWeight="1"
+                        android:fontFamily="serif-monospace"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/cardview_light_background"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text_work_shop"
+                        android:layout_toLeftOf="@+id/navigate_work_shop"
+                        android:background="#555555"/>
+
+                    <ImageView
+                        android:id="@+id/navigate_work_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/cardview_light_background"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_work_shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"/>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/colorPrimary">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/text_exhibition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tech-Exhibitions"
+                        android:textFontWeight="1"
+                        android:fontFamily="serif-monospace"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/cardview_light_background"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text_exhibition"
+                        android:layout_toLeftOf="@+id/navigate_exhibition"
+                        android:background="#555555"/>
+
+                    <ImageView
+                        android:id="@+id/navigate_exhibition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/cardview_light_background"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/ic_navigate_next_black_24dp"
+                        android:layout_centerVertical="true"/>
+
+                </RelativeLayout>
+
+                <include
+                    android:layout_height="120dp"
+                    android:layout_width="250dp"
+                    layout="@layout/tech_exhibition_item"
+                    android:layout_marginBottom="10dp"/>
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
