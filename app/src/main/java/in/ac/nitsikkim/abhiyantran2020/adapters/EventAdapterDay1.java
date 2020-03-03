@@ -1,11 +1,13 @@
 package in.ac.nitsikkim.abhiyantran2020.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ import in.ac.nitsikkim.abhiyantran2020.R;
 import in.ac.nitsikkim.abhiyantran2020.models.EventModel;
 
 
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
+public class EventAdapterDay1 extends RecyclerView.Adapter<EventAdapterDay1.EventViewHolder> {
 
 
     private ArrayList<EventModel> eventItems;
@@ -24,15 +26,17 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public static class EventViewHolder extends RecyclerView.ViewHolder{
 
 
+        public ImageView imageViewAbhi;
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageViewAbhi = itemView.findViewById(R.id.event_abhi_image);
 
 
         }
 
     }
 
-    public EventAdapter(ArrayList<EventModel> arrayList, Context context)
+    public EventAdapterDay1(ArrayList<EventModel> arrayList, Context context)
     {
         this.eventItems = arrayList;
         this.context = context;
@@ -50,6 +54,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull final EventViewHolder holder, final int position) {
 
+        Glide.with(context)
+                .load(context.getResources().getDrawable(R.drawable.abhi))
+                .into(holder.imageViewAbhi);
 
     }
 

@@ -3,7 +3,11 @@ package in.ac.nitsikkim.abhiyantran2020;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -73,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if(User.user == null)
             startActivity(new Intent(this,SplashScreen.class));
         else
@@ -97,9 +103,17 @@ public class MainActivity extends AppCompatActivity {
                     setContentView(R.layout.activity_main);
                     setLayout();
                     first = true;
+
+                    //set app image in title
+                    ImageView appImage = findViewById(R.id.app_image);
+                    Glide.with(getApplicationContext())
+                            .load(getResources().getDrawable(R.drawable.abhi))
+                            .into(appImage);
                 }
             }
         });
+
+
 
 
     }
@@ -178,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void switchFragment(Fragment fragment,TextView textView, ImageView imageView) {
+    private void switchFragment(Fragment fragment, TextView textView, final ImageView imageView) {
         resetColor(textView);
         textView.setTextColor(getResources().getColor(R.color.colorAccent));
         imageView.setColorFilter(getResources().getColor(R.color.colorAccent));
@@ -187,6 +201,18 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.main_frame_layout, fragment);
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
+        if(textView.getText().toString().trim().equals(getResources().getString(R.string.bottom_nav_home)))
+        {
+            RotateAnimation anim = new RotateAnimation(0.0f, 360.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+            anim.setInterpolator(new LinearInterpolator());
+            anim.setRepeatCount(1);
+            anim.setDuration(3000);
+            imageView.startAnimation(anim);
+
+        }
+
+
+
     }
 
     private void resetColor(TextView textView) {
@@ -202,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
         if(textView.getId() != R.id.bottom_nav_home_new_text){
             homeText.setTextColor(getResources().getColor(R.color.white));
             home.setColorFilter(getResources().getColor(R.color.white));
+            home.setAnimation(null);
         }
         if(textView.getId() != R.id.bottom_nav_guest_new_text){
             guestsText.setTextColor(getResources().getColor(R.color.white));
